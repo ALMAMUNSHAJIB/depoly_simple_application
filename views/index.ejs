@@ -1,0 +1,71 @@
+<%- include('./partials/header.ejs') %>
+   <div class="container">
+       <div class="row">
+           <div class="col-sm-6 mt-5">
+              <h2 class="alert alert-success text-center block">Add New Student</h2>
+              <form action="" method="post">
+                  <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" id="name" name="name" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="text" id="age" name="age" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="fee" class="form-label">Fee</label>
+                    <input type="text" id="fee" name="fee" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+           </div>
+           <div class="col-sm-6 mt-5">
+             <h2 class="alert alert-danger text-center display-👱‍♀️ ">List of Student</h2>
+             <%# show all data %>
+             <table class="table table-striped table-hover">
+                 <thead>
+                     <tr>
+                         <th scope="col">No</th>
+                         <th scope="col">Name</th>
+                         <th scope="col">Age</th>
+                         <th scope="col">Fee</th>
+                         <th scope="col">Actions</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <% var i = 1 %> 
+                     <% data.forEach((item) => { %>
+                        <tr>
+                            <td><%= i++ %></td>
+                            <td><%= item.name %><td>
+                            <td><%= item.age %></td>
+                            <td><%= item.fee %></td>
+                            <td>
+                               <form action="/student/edit/<%= item._id %>" method="get" class="d-inline">
+                                   <button type="submit" class="btn">
+                                    <i class="fas fa-pen-square text-info"></i>
+                                   </button>
+                               </form>
+                               <form action="/student/delete/<%= item._id %>" method="post" class="d-inline">
+                                <button type="submit" class="btn">
+                                    <i class="fas fa-trash text-danger"></i>
+                                </button>
+                            </form>
+                              
+                                
+                       
+                            </td>
+                        </tr>
+                     <%  }) %>
+                   
+                 </tbody>
+             </table>
+           </div>
+
+       </div>
+   </div>
+
+<%- include('./partials/footer.ejs') %>
+
+
+   
