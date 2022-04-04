@@ -9,10 +9,6 @@ const connectDb = async(DATABASE_URL) => {
         console.log('Database conncted successfully!!!');
     } catch (error) {
         console.log(error);
-        res.status(500).json({
-            "status": "failed",
-            "message": "Database aren't connected!!"
-        });
     }
 };
 
